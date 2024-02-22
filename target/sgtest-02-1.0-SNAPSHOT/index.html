@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sgMyst</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<script>
+		try {
+			if (typeof Sagem == "undefined") {
+				var Sagem = new JSX();
+				Sagem.addListener(function (ev){
+					// console.log(ev);
+					if (typeof sagemEventHandler == 'function') {sagemEventHandler ('FAKE_KEY', ev);}
+				});
+			}
+		}catch(e){console.log(e);}
+	</script>
+	<!-- Archivo con librerias de terceros -->
+	<script src="build/js/lib.js"></script>
+	<script src="build/js/templates.js"></script>
+	<script src="build/js/util.js"></script>
+	<script src="build/js/model.js"></script>
+	<script src="build/js/app.js"></script>
+	<script src="build/js/services.js"></script>
+	<script src="build/js/static.js"></script>
+	<script src="build/js/view.js"></script>
+	<script src="build/js/ui_component.js"></script>
+
+	<!-- Script donde inicia la aplicación -->
+	<script src="config/AppConfig.js"></script>
+	<script src="app/Application.js"></script>
+</head>
+<body>
+	<div id="mainContainer">
+		<div id="viewContainer"></div>
+		<div id="errorContainer"></div>
+		<div id="Loading" class="hidden">
+			<div class="loading"></div>
+			<div class="loading-text">
+				Estamos preparando <br>
+				tu experiencia…
+			</div>
+		</div>
+	</div>
+	<script>
+		window.addEventListener("beforeunload", function() {
+			VideoSession.clearSessions();
+		});
+	</script>
+</body>
+</html>
